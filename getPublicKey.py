@@ -30,7 +30,7 @@ def parse_bip32_path(path):
 	for pathElement in elements:
 		element = pathElement.split('\'')
 		if len(element) == 1:
-			result = result + struct.pack(">I", int(element[0]))			
+			result = result + struct.pack(">I", int(element[0]))
 		else:
 			result = result + struct.pack(">I", 0x80000000 | int(element[0]))
 	return result
@@ -40,7 +40,7 @@ parser.add_argument('--path', help="BIP 32 path to retrieve")
 args = parser.parse_args()
 
 if args.path == None:
-	args.path = "44'/60'/0'/0/0"
+	args.path = "44'/108'/0'/0/0"
 
 donglePath = parse_bip32_path(args.path)
 apdu = "e0020100".decode('hex') + chr(len(donglePath) + 1) + chr(len(donglePath) / 4) + donglePath

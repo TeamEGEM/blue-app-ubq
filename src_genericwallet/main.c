@@ -78,7 +78,7 @@ uint32_t set_result_get_publicKey(void);
 #define WEI_TO_ETHER 18
 
 static const uint8_t const TOKEN_TRANSFER_ID[] = {0xa9, 0x05, 0x9c, 0xbb};
-static const uint8_t const TICKER_ETH[] = "ETH ";
+static const uint8_t const TICKER_UBQ[] = "UBQ ";
 typedef struct tokenContext_t {
     uint8_t data[4 + 32 + 32];
     uint32_t dataFieldPos;
@@ -153,7 +153,7 @@ WIDE internalStorage_t N_storage_real;
 static const char const CONTRACT_ADDRESS[] = "New contract";
 
 static const char const SIGN_MAGIC[] = "\x19"
-                                       "Ethereum Signed Message:\n";
+                                       "Ubiq Signed Message:\n";
 
 const unsigned char hex_digits[] = {'0', '1', '2', '3', '4', '5', '6', '7',
                                     '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
@@ -222,7 +222,7 @@ const bagl_element_t ui_idle_blue[] = {
     /// TOP STATUS BAR
     {{BAGL_LABELINE, 0x00, 0, 45, 320, 30, 0, 0, BAGL_FILL, 0xFFFFFF, COLOR_APP,
       BAGL_FONT_OPEN_SANS_SEMIBOLD_10_13PX | BAGL_FONT_ALIGNMENT_CENTER, 0},
-     "ETHEREUM",
+     "UBIQ",
      0,
      0,
      0,
@@ -268,7 +268,7 @@ const bagl_element_t ui_idle_blue[] = {
     {{BAGL_LABELINE, 0x00, 0, 270, 320, 30, 0, 0, BAGL_FILL, 0x000000,
       COLOR_BG_1,
       BAGL_FONT_OPEN_SANS_LIGHT_16_22PX | BAGL_FONT_ALIGNMENT_CENTER, 0},
-     "Open Ethereum wallet",
+     "Open Ubiq wallet",
      0,
      0,
      0,
@@ -2225,7 +2225,7 @@ void handleSign(uint8_t p1, uint8_t p2, uint8_t *workBuffer,
     uint32_t i;
     uint8_t address[41];
     uint8_t decimals = WEI_TO_ETHER;
-    uint8_t *ticker = TICKER_ETH;
+    uint8_t *ticker = TICKER_UBQ;
     uint8_t tickerOffset = 0;
     if (p1 == P1_FIRST) {
         tmpCtx.transactionContext.pathLength = workBuffer[0];
@@ -2346,9 +2346,9 @@ void handleSign(uint8_t p1, uint8_t p2, uint8_t *workBuffer,
     adjustDecimals((char *)(G_io_apdu_buffer + 100), i,
                    (char *)G_io_apdu_buffer, 100, WEI_TO_ETHER);
     i = 0;
-    maxFee[0] = 'E';
-    maxFee[1] = 'T';
-    maxFee[2] = 'H';
+    maxFee[0] = 'U';
+    maxFee[1] = 'B';
+    maxFee[2] = 'Q';
     maxFee[3] = ' ';
     while (G_io_apdu_buffer[i]) {
         maxFee[4 + i] = G_io_apdu_buffer[i];

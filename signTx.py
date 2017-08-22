@@ -34,7 +34,7 @@ def parse_bip32_path(path):
 	for pathElement in elements:
 		element = pathElement.split('\'')
 		if len(element) == 1:
-			result = result + struct.pack(">I", int(element[0]))			
+			result = result + struct.pack(">I", int(element[0]))
 		else:
 			result = result + struct.pack(">I", 0x80000000 | int(element[0]))
 	return result
@@ -50,7 +50,7 @@ parser.add_argument('--data', help="Data to add, hex encoded")
 args = parser.parse_args()
 
 if args.path == None:
-	args.path = "44'/60'/0'/0/0"
+	args.path = "44'/108'/0'/0/0"
 
 if args.data == None:
 	args.data = ""
